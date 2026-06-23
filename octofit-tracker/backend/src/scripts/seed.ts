@@ -4,12 +4,8 @@ import { Activity } from '../models/Activity';
 import { Workout } from '../models/Workout';
 
 /**
- * Test data seed description:
- * This seed script initializes the octofit_db database with sample data including:
- * - 3 teams (Alpha, Beta, Gamma)
- * - 4 activities (Running, Cycling, Swimming, Yoga)
- * - 3 users assigned to teams
- * - 3 sample workouts for testing
+ * Seed the octofit_db database with test data
+ * This script initializes sample data including teams, activities, users, and workouts
  */
 export async function seedDatabase() {
   try {
