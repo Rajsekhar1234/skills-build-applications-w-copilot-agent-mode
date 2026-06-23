@@ -3,6 +3,11 @@ import { Team } from '../models/Team';
 import { Activity } from '../models/Activity';
 import { Workout } from '../models/Workout';
 
+/**
+ * Seed script to populate test data into octofit_db
+ * This script initializes sample teams, activities, users, and workouts
+ * for testing and demonstration purposes in the OctoFit Tracker application.
+ */
 export async function seedDatabase() {
   try {
     // Clear existing data
@@ -21,7 +26,7 @@ export async function seedDatabase() {
     // Create activities
     const activities = await Activity.insertMany([
       { name: 'Running', description: '10km run', points: 100 },
-      { name: 'Cycling', description '50km ride', points: 150 },
+      { name: 'Cycling', description: '50km ride', points: 150 },
       { name: 'Swimming', description: '2km swim', points: 120 },
       { name: 'Yoga', description: '1 hour session', points: 50 }
     ]);
@@ -40,7 +45,7 @@ export async function seedDatabase() {
       { user: users[2]._id, activity: activities[2]._id, duration: 45, points: 120 }
     ]);
 
-    console.log('Database seeded successfully!');
+    console.log('Database seeded successfully with test data!');
   } catch (error) {
     console.error('Error seeding database:', error);
   }
