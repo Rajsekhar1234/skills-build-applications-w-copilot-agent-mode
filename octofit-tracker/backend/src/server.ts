@@ -1,26 +1,35 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
+import { connectDB } from './config/database';
+import userRoutes from './routes/users';
+import teamRoutes from './routes/teams';
+import activityRoutes from './routes/activities';
+import leaderboardRoutes from './routes/leaderboard';
+import workoutRoutes from './routes/workouts';
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/octofit-tracker';
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection
-mongoose.connect(MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+// Connect to database
+connectDB();
 
-// Health check route
+// Routes
+app.use('/api/users', userRoutes);
+app.use('/api/teams', teamRoutes);
+app.use('/api/activities', activityRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
+app.use('/api/workouts', workoutRoutes);
+
+// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'Server is running' });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`OctoFit Backend running on port ${PORT}`);
 });
