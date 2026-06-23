@@ -4,9 +4,8 @@ import { Activity } from '../models/Activity';
 import { Workout } from '../models/Workout';
 
 /**
- * Seed script to populate test data into octofit_db
- * This script initializes sample teams, activities, users, and workouts
- * for testing and demonstration purposes in the OctoFit Tracker application.
+ * Seed script: Populate test data into octofit_db
+ * Initializes and seeds sample teams, activities, users, and workouts for the OctoFit Tracker
  */
 export async function seedDatabase() {
   try {
@@ -38,7 +37,7 @@ export async function seedDatabase() {
       { username: 'charlie', email: 'charlie@example.com', team: teams[2]._id, totalPoints: 400 }
     ]);
 
-    // Create workouts
+    // Create workouts - seed command initializes test data
     await Workout.insertMany([
       { user: users[0]._id, activity: activities[0]._id, duration: 30, points: 100 },
       { user: users[1]._id, activity: activities[1]._id, duration: 60, points: 150 },
